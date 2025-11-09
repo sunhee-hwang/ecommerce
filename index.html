@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김개발 | E-commerce 플랫폼 프로젝트</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa; /* 밝은 회색 배경 */
+            color: #1a202c;
+            scroll-behavior: smooth; /* 부드러운 스크롤 */
+        }
+        .section-title {
+            font-size: 2.25rem; /* 36px */
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #2d3748;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem; /* 12px */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .tech-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem; /* 12px */
+            font-weight: 600;
+            background-color: #e2e8f0;
+            color: #4a5568;
+            border-radius: 9999px;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        /* 다크 모드 대응 */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1a202c;
+                color: #e2e8f0;
+            }
+            .section-title {
+                color: #e2e8f0;
+            }
+            .card {
+                background-color: #2d3748;
+            }
+            .tech-icon {
+                background-color: #4a5568;
+                color: #e2e8f0;
+            }
+            input, textarea {
+                background-color: #4a5568;
+                color: #e2e8f0;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- 1. Header & Navigation -->
+    <header class="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">KimDev</a>
+            <div class="space-x-6 hidden md:flex">
+                <a href="#about" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">About</a>
+                <a href="#skills" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Skills</a>
+                <a href="#project" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Project</a>
+                <a href="#contact" class="bg-indigo-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-indigo-700 transition-colors">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 dark:text-gray-300">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 space-y-2">
+            <a href="#about" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">About</a>
+            <a href="#skills" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Skills</a>
+            <a href="#project" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Project</a>
+            <a href="#contact" class="block bg-indigo-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-indigo-700 transition-colors text-center">Contact</a>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <section id="hero" class="container mx-auto px-6 py-20 md:py-32 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">E-commerce 플랫폼 구축</h1>
+        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8">성능 최적화와 사용자 경험 개선에 집중한 프로젝트입니다.</p>
+        <a href="#project" class="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-indigo-700 transition-colors">프로젝트 상세 보기</a>
+    </section>
+
+    <!-- 3. About Me (강의 4번 - 기술 스택 소개) -->
+    <section id="about" class="py-20 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3">
+                    <!-- Placeholder 이미지 -->
+                    <img src="https://placehold.co/400x400/E2E8F0/4A5568?text=Profile" alt="프로필 이미지" class="rounded-full shadow-lg mx-auto w-64 h-64 md:w-80 md:h-80 object-cover">
+                </div>
+                <div class="md:w-2/3 text-lg text-gray-700 dark:text-gray-300 space-y-4">
+                    <p>저는 비즈니스 문제를 기술로 해결하는 과정에 매력을 느끼는 개발자입니다. 복잡한 요구사항을 명확한 아키텍처로 설계하고, 효율적인 코드로 구현하는 것을 좋아합니다.</p>
+                    <p>특히 이 프로젝트에서 사용한 [React와 TypeScript]를 활용하여 유지보수 가능하고 확장성 높은 웹 애플리케이션을 구축하는 데 자신있습니다. [성능 최적화]나 [팀원들과의 원활한 커뮤니케이션]을 중요하게 생각하며, 지속적인 학습을 통해 성장하고 있습니다.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.03-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.003 10.003 0 0022 12.017C22 6.484 17.523 2 12 2z" clip-rule="evenodd" /></svg>
+                            <span class="sr-only">GitHub</span>
+                        </a>
+                        <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-1.34-.025-3.068-1.868-3.068-1.87 0-2.158 1.46-2.158 2.96v5.712h-3v-11h2.88v1.396h.04c.42-.79 1.44-1.62 2.84-1.62 3.03 0 3.59 1.995 3.59 4.577v6.647z"/></svg>
+                            <span class="sr-only">LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Skills (강의 4번 - 기술 스택 아이콘) -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">Skills</h2>
+            <div class="max-w-4xl mx-auto">
+                <!-- Frontend -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">Frontend</h3>
+                    <div class="flex flex-wrap">
+                        <span class="tech-icon">JavaScript (ES6+)</span>
+                        <span class="tech-icon">TypeScript</span>
+                        <span class="tech-icon">React</span>
+                        <span class="tech-icon">Next.js</span>
+                        <span class="tech-icon">Tailwind CSS</span>
+                        <span class="tech-icon">Recoil</span>
+                        <span class="tech-icon">React Query</span>
+                    </div>
+                </div>
+                <!-- Backend -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">Backend</h3>
+                    <div class="flex flex-wrap">
+                        <span class="tech-icon">Node.js</span>
+                        <span class="tech-icon">Express</span>
+                        <span class="tech-icon">Django</span>
+                        <span class="tech-icon">PostgreSQL</span>
+                        <span class="tech-icon">MongoDB</span>
+                    </div>
+                </div>
+                <!-- DevOps & Tools -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">DevOps & Tools</h3>
+                    <div class="flex flex-wrap">
+                        <span class="tech-icon">Git</span>
+                        <span class="tech-icon">Docker</span>
+                        <span class="tech-icon">AWS (EC2, S3)</span>
+                        <span class="tech-icon">Vercel</span>
+                        <span class="tech-icon">Figma</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Project Showcase (강의 3, 4, 5번 항목 집중) -->
+    <section id="project" class="py-20 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-6 max-w-5xl"> <!-- 가독성을 위해 최대 너비 설정 -->
+            <h2 class="section-title">Project Showcase</h2>
+            
+            <!-- Project Header -->
+            <div class="text-center mb-12">
+                <h3 class="text-4xl font-bold mb-3">E-commerce 플랫폼 구축</h3>
+                <p class="text-lg text-gray-500 dark:text-gray-400 mb-6">2024. 01. - 2024. 03. (3인 팀 프로젝트)</p>
+                <!-- 기술 스택 -->
+                <div class="flex justify-center flex-wrap gap-2 mb-8">
+                    <span class="tech-icon">React</span>
+                    <span class="tech-icon">Next.js</span>
+                    <span class="tech-icon">TypeScript</span>
+                    <span class="tech-icon">Node.js</span>
+                    <span class="tech-icon">PostgreSQL</span>
+                    <span class="tech-icon">React Query</span>
+                </div>
+                <!-- 링크 -->
+                <div class="flex justify-center space-x-4">
+                    <a href="#" target="_blank" class="bg-gray-900 dark:bg-gray-200 text-white dark:text-gray-900 px-6 py-3 rounded-lg font-semibold flex items-center hover:bg-gray-700 dark:hover:bg-gray-300 transition-colors text-lg">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.03-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.003 10.003 0 0022 12.017C22 6.484 17.523 2 12 2z" clip-rule="evenodd" /></svg>
+                        GitHub
+                    </a>
+                    <a href="#" target="_blank" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold flex items-center hover:bg-indigo-700 transition-colors text-lg">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        Live Demo
+                    </a>
+                </div>
+            </div>
+
+            <!-- Main Image -->
+            <div class="mb-12">
+                <img src="https://placehold.co/1200x700/a3bffa/1a202c?text=Project+Main+View" alt="프로젝트 메인 이미지" class="rounded-lg shadow-lg w-full object-cover">
+            </div>
+
+            <!-- Project Details -->
+            <div class="space-y-12">
+                
+                <!-- 1. 개요 및 문제 정의 (강의 3번) -->
+                <div>
+                    <h4 class="text-2xl font-bold mb-4 border-b pb-2 dark:border-gray-600">1. 프로젝트 개요 및 문제 정의</h4>
+                    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                        이 프로젝트는 차세대 E-commerce 플랫폼을 구축하여 기존 서비스의 성능과 사용자 경험을 혁신하는 것을 목표로 했습니다.
+                        <br><br>
+                        기존 커머스 사이트의 <strong>복잡한 UI와 느린 로딩 속도(평균 TBT 3초 이상)</strong>는 높은 사용자 이탈률의 주된 원인이었습니다. 
+                        이를 개선하여 사용자 경험을 최적화하고, 최종적으로 구매 전환율을 높이고자 했습니다.
+                    </p>
+                </div>
+
+                <!-- 2. 아키텍처 및 설계 (강의 4번 - 다이어그램) -->
+                <div>
+                    <h4 class="text-2xl font-bold mb-4 border-b pb-2 dark:border-gray-600">2. 아키텍처 및 설계</h4>
+                    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                        문제 해결을 위해 <strong>Next.js의 SSR/ISR</strong>을 핵심 전략으로 채택했습니다. 
+                        데이터베이스는 PostgreSQL을 사용했으며, Node.js 기반의 REST API를 설계했습니다. 
+                        아래는 시스템의 전체 아키텍처 다이어그램입니다.
+                    </p>
+                    <!-- 다이어그램 Placeholder (강의 4번) -->
+                    <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-inner text-center">
+                        <img src="https://placehold.co/800x450/e2e8f0/4a5568?text=Architecture+Diagram+(ERD,+Sequence...)" alt="아키텍처 다이어그램" class="w-full rounded-md object-cover mx-auto">
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">시스템 아키텍처</p>
+                    </div>
+                </div>
+
+                <!-- 3. 핵심 기능 및 구현 (강의 4번 - 화면 캡처, 코드) -->
+                <div>
+                    <h4 class="text-2xl font-bold mb-4 border-b pb-2 dark:border-gray-600">3. 핵심 기능 및 구현</h4>
+                    <div class="grid md:grid-cols-2 gap-8 items-start">
+                        <!-- Feature 1 -->
+                        <div>
+                            <h5 class="text-xl font-semibold mb-3">A. 서버 사이드 렌더링 (SSR)을 통한 성능 최적화</h5>
+                            <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                                Next.js의 `getServerSideProps`를 사용해 상품 상세 페이지를 서버에서 렌더링했습니다. 
+                                이를 통해 초기 로딩 시점(TBT)을 40% 단축하고 검색 엔진 최적화(SEO)를 개선했습니다.
+                            </p>
+                            <img src="https://placehold.co/600x400/c3dafe/1a202c?text=Feature+1+Screenshot" alt="성능 최적화" class="rounded-lg shadow-md w-full object-cover">
+                        </div>
+                        <!-- Feature 2 -->
+                        <div>
+                            <h5 class="text-xl font-semibold mb-3">B. React Query를 활용한 상태 관리</h5>
+                            <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                                클라이언트 사이드의 비동기 데이터를 React Query로 관리했습니다. 
+                                `stale-while-revalidate` 캐싱 전략을 통해 불필요한 API 호출을 획기적으로 줄이고 사용자 경험을 향상시켰습니다.
+                            </p>
+                            <img src="https://placehold.co/600x400/b9f2d0/1a202c?text=Feature+2+Screenshot" alt="상태 관리" class="rounded-lg shadow-md w-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. 나의 역할 및 기여 (강의 5번 - 면접 대비) -->
+                <div>
+                    <h4 class="text-2xl font-bold mb-4 border-b pb-2 dark:border-gray-600">4. 나의 역할 및 기여</h4>
+                    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                        팀 내 <strong>프론트엔드 개발자</strong>로서 다음 역할을 담당했습니다.
+                    </p>
+                    <ul class="list-disc list-inside text-lg text-gray-700 dark:text-gray-300 space-y-2">
+                        <li>Next.js 기반 프로젝트 아키텍처 설계 및 초기 세팅</li>
+                        <li>React Query 도입 및 전역 상태 관리 전략 수립</li>
+                        <li>상품 상세 페이지 및 장바구니 기능 SSR/CSR 구현</li>
+                        <li>팀 내 코드 리뷰 및 Git 브랜치 전략(Git-flow) 관리</li>
+                    </ul>
+                </div>
+
+                <!-- 5. 결과 및 회고 (강의 3, 5번) -->
+                <div>
+                    <h4 class="text-2xl font-bold mb-4 border-b pb-2 dark:border-gray-600">5. 결과 및 회고</h4>
+                    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                        프로젝트를 통해 다음과 같은 정량적/정성적 성과를 달성했습니다. (강의 5번 - 성과 수치화)
+                    </p>
+                    <ul class="list-disc list-inside text-lg text-gray-700 dark:text-gray-300 space-y-2 mb-6">
+                        <li><strong>Lighthouse 점수 30점 향상</strong> (Performance 55 -> 85)</li>
+                        <li>초기 로딩 속도(TBT) 40% 단축</li>
+                        <li>TypeScript를 통한 코드 안정성 확보 및 배포 전 버그 20% 감소</li>
+                    </ul>
+                    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                        <strong>배운 점:</strong> SSR의 동작 원리와 React Query의 캐시 전략을 깊이 이해할 수 있었습니다. 
+                        <br><br>
+                        <strong>개선점 (면접 대비):</strong> (강의 5번 - 다시 만든다면?)
+                        향후 Incremental Static Regeneration (ISR)을 도입하여 빌드 시간을 단축하고, Jest와 React Testing Library를 활용한 테스트 코드를 작성하여 코드 안정성을 더욱 높이고 싶습니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 6. Contact (강의 5번 - 면접 제안 유도) -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6 max-w-2xl text-center">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+                저의 경험과 기술에 대해 더 궁금한 점이 있으신가요?<br>
+                편하게 연락 주시면 커피챗이라도 환영입니다!
+            </p>
+            <a href="mailto:email@example.com" class="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-indigo-700 transition-colors">
+                email@example.com
+            </a>
+        </div>
+    </section>
+
+    <!-- 7. Footer -->
+    <footer class="bg-white dark:bg-gray-800 py-8">
+        <div class="container mx-auto px-6 text-center text-gray-500 dark:text-gray-400">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="hover:text-indigo-600 dark:hover:text-indigo-400">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.03-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.003 10.003 0 0022 12.017C22 6.484 17.523 2 12 2z" clip-rule="evenodd" /></svg>
+                </a>
+                <a href="#" class="hover:text-indigo-600 dark:hover:text-indigo-400">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-1.34-.025-3.068-1.868-3.068-1.87 0-2.158 1.46-2.158 2.96v5.712h-3v-11h2.88v1.396h.04c.42-.79 1.44-1.62 2.84-1.62 3.03 0 3.59 1.995 3.59 4.577v6.647z"/></svg>
+                </a>
+            </div>
+            <p>&copy; 2025 KimDev. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 모바일 메뉴 토글
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 모바일 메뉴 링크 클릭 시 메뉴 닫기
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+
+</body>
+</html>
